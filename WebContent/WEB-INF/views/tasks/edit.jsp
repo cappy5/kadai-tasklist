@@ -3,22 +3,29 @@
 <c:import url="../layout/app.jsp">
 <c:param name="content">
 
-    <h2>編集ページ</h2>
-    <form method="POST" action="${pageContext.request.contextPath}/update">
-        <c:import url="_form.jsp" />
-    </form>
-
-        <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
-        <form method="POST" action="${pageContext.request.contextPath}/destroy">
-            <input type="hidden" name="_token" value="${_token}" />
-        </form>
-        <script>
-        function confirmDestroy() {
-            if(confirm("本当に削除してよろしいですか？")) {
-                document.forms[1].submit();
+    <c:choose>
+        <c:when test="${task != null}">
+            <h2>編集ページ</h2>
+            <form method="POST" action="${pageContext.request.contextPath}/update">
+                <c:import url="_form.jsp" />
+            </form>
+            <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
+            <form method="POST" action="${pageContext.request.contextPath}/destroy">
+                <input type="hidden" name="_token" value="${_token}" />
+            </form>
+            <script>
+            function confirmDestroy() {
+                if(confirm("本当に削除してよろしいですか？")) {
+                    document.forms[1].submit();
+                }
             }
-        }
-        </script>
+            </script>
+        </c:when>
+        <c:otherwise>
+            <h2>お探しのタスクは見つかりませんでした。</h2>
+        </c:otherwise>
+    </c:choose>
+    <p>一覧に戻るには<a href="${pageContext.request.contextPath}/index">こちら</a></p>
 
 </c:param>
 </c:import>

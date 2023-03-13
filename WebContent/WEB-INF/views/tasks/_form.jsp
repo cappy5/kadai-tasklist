@@ -5,5 +5,3 @@
 <input type="text" name="content" id="content" value="${task.content}"/><br /><br />
 <input type="hidden" name="_token" value="${_token}" />
 <button type="submit">反映！</button>
-
-<p>一覧に戻るには<a href="${pageContext.request.contextPath}/index">こちら</a></p>

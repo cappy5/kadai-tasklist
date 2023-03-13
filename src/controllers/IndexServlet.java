@@ -37,21 +37,11 @@ public class IndexServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
         List<Task> tasks = em.createNamedQuery("getAllTasks", Task.class).getResultList();
 
-        request.setAttribute("tasks", tasks);
-
         em.close();
 
+        request.setAttribute("tasks", tasks);
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/tasks/index.jsp");
         rd.forward(request, response);
 
     }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
-    }
-
 }
