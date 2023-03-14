@@ -27,7 +27,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p>このメッセージを編集するには<a href="${pageContext.request.contextPath}/edit?id=${task.id}">こちら</a></p>
+            <p>このタスクを編集するには<a href="${pageContext.request.contextPath}/edit?id=${task.id}">こちら</a></p>
         </c:when>
         <c:otherwise>
             <h2>お探しのタスクは見つかりませんでした。</h2>
